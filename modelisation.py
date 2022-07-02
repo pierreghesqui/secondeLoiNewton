@@ -66,10 +66,9 @@ class Modelisation:
         
     def show(self):
         with imageio.get_writer('modelisation.gif', mode='I',fps=2) as writer:
-            listFichier = os.listdir('frames/basket')
             #print(listFichier)
             for i  in range(self.nbImages):
-                self.image = imageio.imread('frames/basket/'+str(i))
+                self.image = imageio.imread('frames/basket/frame'+str(i)+'.png')
                 self.dessineCroix(self.positions[i])
                 writer.append_data(self.image)
                 
