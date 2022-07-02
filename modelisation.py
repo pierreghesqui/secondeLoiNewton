@@ -68,12 +68,11 @@ class Modelisation:
         with imageio.get_writer('modelisation.gif', mode='I',fps=2) as writer:
             listFichier = os.listdir('frames/basket')
             #print(listFichier)
-            i=0
-            for filename in listFichier:
-                self.image = imageio.imread('frames/basket/'+filename)
+            for i  in range(self.nbImages):
+                self.image = imageio.imread('frames/basket/'+str(i))
                 self.dessineCroix(self.positions[i])
                 writer.append_data(self.image)
-                i=i+1
+                
         
     def metersToPixel (self,lc):
         pix = lc/self.pixelSize
@@ -93,7 +92,7 @@ class Modelisation:
         color = (255,255,255)
         cv2.line(self.image, (pix.x-tailleCroix,pix.y-tailleCroix), (pix.x+tailleCroix,pix.y+tailleCroix ), color, 2)
         cv2.line(self.image, (pix.x+tailleCroix,pix.y-tailleCroix ), (pix.x-tailleCroix,pix.y+tailleCroix ), color, 2)
-        cv2.putText(self.image,"Modèle", (pix.x,pix.y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 1,cv2.LINE_AA)
+        cv2.putText(self.image,"Modele", (pix.x,pix.y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.75, color, 1,cv2.LINE_AA)
 
     
      
